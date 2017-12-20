@@ -1,0 +1,34 @@
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\bin\Debug\ArchiverWpf.exe.config
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\bin\Debug\ArchiverWpf.exe
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\bin\Debug\ArchiverWpf.pdb
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\MainWindow.g.cs
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\App.g.cs
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf_MarkupCompile.cache
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf_MarkupCompile.lref
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\MainWindow.baml
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.g.resources
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.Properties.Resources.resources
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.csproj.GenerateResource.Cache
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.csproj.CoreCompileInputs.cache
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.exe
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.pdb
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\bin\Debug\Archiver.dll
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\bin\Debug\Archiver.pdb
+C:\Users\kuziv\AppData\Roaming\Skype\My Skype Received Files\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.csprojResolveAssemblyReference.cache
+C:\project\Home\Archiver\ArchiverWpf\bin\Debug\ArchiverWpf.exe.config
+C:\project\Home\Archiver\ArchiverWpf\bin\Debug\ArchiverWpf.exe
+C:\project\Home\Archiver\ArchiverWpf\bin\Debug\ArchiverWpf.pdb
+C:\project\Home\Archiver\ArchiverWpf\bin\Debug\Archiver.dll
+C:\project\Home\Archiver\ArchiverWpf\bin\Debug\Archiver.pdb
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.csprojResolveAssemblyReference.cache
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\MainWindow.g.cs
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\App.g.cs
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf_MarkupCompile.cache
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf_MarkupCompile.lref
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\MainWindow.baml
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.g.resources
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.Properties.Resources.resources
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.csproj.GenerateResource.Cache
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.csproj.CoreCompileInputs.cache
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.exe
+C:\project\Home\Archiver\ArchiverWpf\obj\Debug\ArchiverWpf.pdb

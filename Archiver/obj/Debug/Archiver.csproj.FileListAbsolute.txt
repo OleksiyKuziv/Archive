@@ -1,0 +1,8 @@
+C:\Users\yurii.myshkovskyi\Desktop\KuzivFolderProcess\Archiver\bin\Debug\Archiver.dll
+C:\Users\yurii.myshkovskyi\Desktop\KuzivFolderProcess\Archiver\bin\Debug\Archiver.pdb
+C:\Users\yurii.myshkovskyi\Desktop\KuzivFolderProcess\Archiver\obj\Debug\Archiver.dll
+C:\Users\yurii.myshkovskyi\Desktop\KuzivFolderProcess\Archiver\obj\Debug\Archiver.pdb
+C:\Users\yurii.myshkovskyi\Desktop\Archiver\bin\Debug\Archiver.dll
+C:\Users\yurii.myshkovskyi\Desktop\Archiver\bin\Debug\Archiver.pdb
+C:\Users\yurii.myshkovskyi\Desktop\Archiver\obj\Debug\Archiver.dll
+C:\Users\yurii.myshkovskyi\Desktop\Archiver\obj\Debug\Archiver.pdb
