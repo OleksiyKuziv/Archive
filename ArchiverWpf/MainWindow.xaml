@@ -5,23 +5,86 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ArchiverWpf"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="350" MinWidth="400" Height="350" Width="600">
+        Title="MainWindow" MinHeight="550" MinWidth="750" Height="550" Width="750">
   <Window.Resources>
+    <Style TargetType="TextBlock">
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="Height" Value="50"/>
+      <Setter Property="Width" Value="100"/>
+    </Style>
+    <Style TargetType="TextBox">
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="Height" Value="50"/>
+      <Setter Property="Width" Value="100"/>
+    </Style>
     <Style TargetType="Button">
-      <Setter Property="Width" Value="80"/>
+      <Setter Property="Width" Value="100"/>
       <Setter Property="Height" Value="60"/>
       <Setter Property="Margin" Value="5" />
     </Style>
+    <Style TargetType="ProgressBar">
+      <Setter Property="Width" Value="350"/>
+      <Setter Property="Height" Value="30"/>
+      <Setter Property="Margin" Value="10"/>
+    </Style>
   </Window.Resources>
-    <Grid Background="AliceBlue">
+  <Grid Background="AliceBlue">
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="*"/>
-      <ColumnDefinition Width="0.8*"/>
+      <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
     <Grid.RowDefinitions>
       <RowDefinition Height="*"/>
       <RowDefinition Height="0.3*"/>
     </Grid.RowDefinitions>
+    <Grid Background="AliceBlue">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="0.4*"/>
+      </Grid.RowDefinitions>
+      <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <TextBlock Text="Input: "/>
+        <TextBox Text="{Binding ToDoSerialize ,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
+          <TextBox Text="{Binding AllFileSerialize,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
+      </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+          <TextBlock Text="Time: "/>
+          <TextBox Text="{Binding TimeToFinishSerialize ,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
+        </StackPanel>
+      </Grid>
+      <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <ProgressBar x:Name="progressBarSerialize" Value="{Binding ProgressSerializeSerialize, UpdateSourceTrigger=PropertyChanged}"/>
+      </StackPanel>
+    </Grid>
+    <Grid Grid.Column="1" Background="AliceBlue">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="0.4*"/>
+      </Grid.RowDefinitions>
+      <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+          <TextBlock Text="Input: "/>
+          <TextBox Text="{Binding ToDoDeSerialize ,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
+          <TextBox Text="{Binding AllFileDeSerialize,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+          <TextBlock Text="Time: "/>
+          <TextBox Text="{Binding TimeToFinishDeSerialize ,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
+        </StackPanel>
+      </Grid>
+      <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <ProgressBar x:Name="progressBarDeSerialize" Value="{Binding ProgressSerializeDeSerialize, UpdateSourceTrigger=PropertyChanged}"/>
+      </StackPanel>
+    </Grid>
     <StackPanel Grid.Row="1" Orientation="Horizontal">
       <Button Command="{Binding SourcePathArchiveCommand}">Source Path</Button>
       <Button Command="{Binding DestinationPathArchiveCommand}">Destination Path</Button>
@@ -33,4 +96,4 @@
       <Button Command="{Binding DeArchiveCommand}">DeArchive</Button>
     </StackPanel>
   </Grid>
-  </Window>
+</Window>

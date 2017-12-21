@@ -6,3 +6,8 @@ C:\Users\yurii.myshkovskyi\Desktop\Archiver\bin\Debug\Archiver.dll
 C:\Users\yurii.myshkovskyi\Desktop\Archiver\bin\Debug\Archiver.pdb
 C:\Users\yurii.myshkovskyi\Desktop\Archiver\obj\Debug\Archiver.dll
 C:\Users\yurii.myshkovskyi\Desktop\Archiver\obj\Debug\Archiver.pdb
+D:\HomeProject\Archiver\Archiver\bin\Debug\Archiver.dll
+D:\HomeProject\Archiver\Archiver\bin\Debug\Archiver.pdb
+D:\HomeProject\Archiver\Archiver\obj\Debug\Archiver.csproj.CoreCompileInputs.cache
+D:\HomeProject\Archiver\Archiver\obj\Debug\Archiver.dll
+D:\HomeProject\Archiver\Archiver\obj\Debug\Archiver.pdb
