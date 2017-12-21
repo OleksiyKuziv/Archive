@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using Archiver.EventArgs;
+using System.Runtime.Serialization;
 
 namespace Archiver.Nodes
 {
@@ -8,5 +9,6 @@ namespace Archiver.Nodes
     public abstract void Load(string path);
     public abstract void Serialize(string path);
     public abstract void Save(string path);
+
   }
 }

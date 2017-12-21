@@ -42,23 +42,16 @@
         <RowDefinition Height="*"/>
         <RowDefinition Height="0.4*"/>
       </Grid.RowDefinitions>
-      <Grid Background="AliceBlue">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="*"/>
-          <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+      <Grid Background="AliceBlue">        
         <StackPanel Grid.Row="0" Orientation="Horizontal">
         <TextBlock Text="Input: "/>
-        <TextBox Text="{Binding ToDoSerialize ,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
+        <TextBox Text="{Binding DoneSerialize ,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
           <TextBox Text="{Binding AllFileSerialize,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
       </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-          <TextBlock Text="Time: "/>
-          <TextBox Text="{Binding TimeToFinishSerialize ,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
-        </StackPanel>
+        
       </Grid>
       <StackPanel Grid.Row="1" Orientation="Horizontal">
-        <ProgressBar x:Name="progressBarSerialize" Value="{Binding ProgressSerializeSerialize, UpdateSourceTrigger=PropertyChanged}"/>
+        <ProgressBar x:Name="progressBarSerialize" Value="{Binding Path=DoneSerialize, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="{Binding AllFileSerialize}"/>
       </StackPanel>
     </Grid>
     <Grid Grid.Column="1" Background="AliceBlue">
@@ -67,22 +60,16 @@
         <RowDefinition Height="0.4*"/>
       </Grid.RowDefinitions>
       <Grid Background="AliceBlue">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="*"/>
-          <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        
         <StackPanel Grid.Row="0" Orientation="Horizontal">
           <TextBlock Text="Input: "/>
-          <TextBox Text="{Binding ToDoDeSerialize ,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
+          <TextBox Text="{Binding DoneDeSerialize ,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
           <TextBox Text="{Binding AllFileDeSerialize,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-          <TextBlock Text="Time: "/>
-          <TextBox Text="{Binding TimeToFinishDeSerialize ,UpdateSourceTrigger=PropertyChanged}" Background="AliceBlue"/>
-        </StackPanel>
+        
       </Grid>
       <StackPanel Grid.Row="1" Orientation="Horizontal">
-        <ProgressBar x:Name="progressBarDeSerialize" Value="{Binding ProgressSerializeDeSerialize, UpdateSourceTrigger=PropertyChanged}"/>
+        <ProgressBar x:Name="progressBarDeSerialize" Value="{Binding Path=DoneDeSerialize, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="{Binding AllFileDeSerialize}"/>
       </StackPanel>
     </Grid>
     <StackPanel Grid.Row="1" Orientation="Horizontal">

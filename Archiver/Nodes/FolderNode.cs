@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using Archiver.Utils;
+using Archiver.EventArgs;
 
 namespace Archiver.Nodes
 {
@@ -15,10 +16,21 @@ namespace Archiver.Nodes
     #region Variables
 
     [DataMember]
+    private readonly long _archiveSize;
+
+    [DataMember]
     private readonly string _relativePath;
 
     [DataMember]
     private List<Node> _childNodes;
+
+    #endregion
+
+    #region Public event
+
+    public event ReportProgress ReportArchivationProgress;
+
+    public event ReportProgress ReportDeArchivationProgress;
 
     #endregion
 
@@ -29,9 +41,10 @@ namespace Archiver.Nodes
 
     }
 
-    public FolderNode(string relativePath)
+    public FolderNode(string relativePath, long archiveSize)
     {
       _relativePath = relativePath;
+      _archiveSize = archiveSize;
     }
 
     #endregion
@@ -65,7 +78,9 @@ namespace Archiver.Nodes
       foreach (var filePath in fileEntries)
       {
         var fileName = Path.GetFileName(filePath);
-        var fileNode = new FileNode(relativePath: string.Format(@"{0}\{1}", _relativePath, fileName));
+        var fileInfo = new FileInfo(filePath);
+        var fileNode = new FileNode(string.Format(@"{0}\{1}", _relativePath, fileName), _archiveSize);
+        fileNode.ReportArchivationProgress += ReportArchivationProgress;
         _childNodes.Add(fileNode);
         fileNode.Load(filePath);
       }
@@ -74,11 +89,11 @@ namespace Archiver.Nodes
       foreach (string subdirectoryPath in subdirectoryEntries)
       {
         var folderName = Path.GetFileName(subdirectoryPath);
-        var folderNode = new FolderNode(relativePath: string.Format(@"{0}\{1}", _relativePath, folderName));
+        var folderNode = new FolderNode(string.Format(@"{0}\{1}", _relativePath, folderName), _archiveSize);
+        folderNode.ReportArchivationProgress += ReportArchivationProgress;
         _childNodes.Add(folderNode);
         folderNode.Load(subdirectoryPath);
       }
-
     }
 
     public override void Serialize(string filePath)
@@ -92,6 +107,18 @@ namespace Archiver.Nodes
       if (!_childNodes.Any()) return;
       foreach (var node in _childNodes)
       {
+        var folderNode = node as FolderNode;
+        if (folderNode != null)
+        {
+          folderNode.ReportArchivationProgress += ReportArchivationProgress;
+          folderNode.ReportDeArchivationProgress += ReportDeArchivationProgress;
+        }
+        var fileNode = node as FileNode;
+        if (fileNode != null)
+        {
+          fileNode.ReportArchivationProgress += ReportArchivationProgress;
+          fileNode.ReportDeArchivationProgress += ReportDeArchivationProgress;
+        }
         node.Save(filePath);
       }
     }

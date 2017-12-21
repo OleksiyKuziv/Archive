@@ -1,4 +1,5 @@
-﻿using Archiver.Utils;
+﻿using Archiver.EventArgs;
+using Archiver.Utils;
 using System;
 using System.IO;
 using System.Runtime.Serialization;
@@ -10,14 +11,24 @@ namespace Archiver.Nodes
   [KnownType(typeof(FileNode))]
   internal class FileNode : Node, IDisposable
   {
-
     #region Variables
+
+    [DataMember]
+    private readonly long _archiveSize;
 
     [DataMember]
     private readonly string _relativePath;
 
     [DataMember]
     private MemoryStream _fileMemoryStream;
+
+    #endregion
+
+    #region Events
+
+    public event ReportProgress ReportArchivationProgress;
+
+    public event ReportProgress ReportDeArchivationProgress;
 
     #endregion
 
@@ -28,9 +39,10 @@ namespace Archiver.Nodes
 
     }
 
-    public FileNode(string relativePath)
+    public FileNode(string relativePath, long archiveSize)
     {
       _relativePath = relativePath;
+      _archiveSize = archiveSize;
     }
 
     #endregion
@@ -44,11 +56,15 @@ namespace Archiver.Nodes
         Console.WriteLine("This File does not exist");
         return;
       }
-
+      var fileSize = FolderSizeCalculator.GetFileSize(filePath);
       using (var binaryFile = File.OpenRead(filePath))
       {
         _fileMemoryStream = new MemoryStream();
         binaryFile.CopyTo(_fileMemoryStream);
+      }
+      if (ReportArchivationProgress != null)
+      {
+        ReportArchivationProgress(this, new ArchivationProgressEventArgs(fileSize, _archiveSize));
       }
     }
 
@@ -63,6 +79,10 @@ namespace Archiver.Nodes
       {
         _fileMemoryStream.Position = 0;
         _fileMemoryStream.CopyTo(stream);
+        if (ReportDeArchivationProgress != null)
+        {
+          ReportDeArchivationProgress(this, new ArchivationProgressEventArgs(_fileMemoryStream.Length, _archiveSize));
+        }
       }
     }
 

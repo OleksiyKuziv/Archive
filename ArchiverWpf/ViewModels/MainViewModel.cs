@@ -12,7 +12,7 @@ using Archiver.Archivers;
 
 namespace ArchiverWpf.ViewModels
 {
-  public class MainViewModel : INotifyPropertyChanged, IArchiver
+  public class MainViewModel : INotifyPropertyChanged
   {
     #region Variables
     private RelayCommand _sourcePathArchiveCommand;
@@ -25,6 +25,10 @@ namespace ArchiverWpf.ViewModels
     private string _destinationPathDeArchive;
     private RelayCommand _archiveCommand;
     private RelayCommand _deArchiveCommand;
+    private long _allFileSerialize;
+    private long _doneSerialize;    
+    private long _allFileDeSerialize;
+    private long _doneDeSerialize;
     #endregion
 
     #region Constructor
@@ -80,6 +84,56 @@ namespace ArchiverWpf.ViewModels
         return _deArchiveCommand;
       }
     }
+    public long AllFileSerialize
+    {
+      get
+      {
+        return _allFileSerialize;
+      }
+      set
+      {
+        _allFileSerialize = value;
+        OnPropertytChanged("AllFileSerialize");
+      }
+    }  
+    public long DoneSerialize
+    {
+      get
+      {
+        return _doneSerialize;
+      }
+      set
+      {
+        _doneSerialize = value;
+        OnPropertytChanged("DoneSerialize");
+      }
+    }
+
+    public long AllFileDeSerialize
+    {
+      get
+      {
+        return _allFileDeSerialize;
+      }
+      set
+      {
+        _allFileDeSerialize = value;
+        OnPropertytChanged("AllFileDeSerialize");
+      }
+    }
+    public long DoneDeSerialize
+    {
+      get
+      {
+        return _doneDeSerialize;
+      }
+      set
+      {
+        _doneDeSerialize = value;
+        OnPropertytChanged("DoneDeSerialize");
+      }
+    }
+
     #endregion
     #region Private Ьethod
     private void InitializeCommand()
@@ -101,6 +155,8 @@ namespace ArchiverWpf.ViewModels
         if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
         {
           _sourcePathArchive = fbd.SelectedPath;
+          var dirInfo = new DirectoryInfo(_sourcePathArchive);
+          //AllFileSerialize = (int)DirSize(dirInfo)/(1024*1024);
         }
       }
     }
@@ -113,7 +169,7 @@ namespace ArchiverWpf.ViewModels
     {
       Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog
       {
-        FileName = "Serialzie"
+        FileName = "Serialize"
       };
       Nullable<bool> result = dlg.ShowDialog();
       if (result == true)
@@ -134,6 +190,8 @@ namespace ArchiverWpf.ViewModels
       if (result == true)
       {
         _sourcePathDeArchive = dlg.FileName;
+        var fileInfo = new FileInfo(_sourcePathDeArchive);
+        AllFileDeSerialize = (int)fileInfo.Length / (1024 * 1024);
       }
     }
 
@@ -169,8 +227,6 @@ namespace ArchiverWpf.ViewModels
       return !String.IsNullOrEmpty(_destinationPathArchive) && !String.IsNullOrEmpty(_sourcePathArchive) ? true : false;
     }
 
-    /// /////////////////////////////////////
-
     private void DeArchiveCommand_Execute(object obj)
     {
       DeArchive(_sourcePathDeArchive, _destinationPathDeArchive);
@@ -203,6 +259,13 @@ namespace ArchiverWpf.ViewModels
     public Task Archive(string sourcePath, string destinationPath)
     {
       IArchiver archiver = new BinaryArchiver();
+      AllFileDeSerialize = 0;
+      DoneSerialize = 0;
+      archiver.ReportArchivationProgress += (o, e) =>
+      {
+        AllFileSerialize = e.MaxProgress;
+        DoneSerialize += e.Progress;        
+      };
       var task = archiver.Archive(sourcePath, destinationPath);
       return (Task)task;
     }
@@ -210,6 +273,13 @@ namespace ArchiverWpf.ViewModels
     public Task DeArchive(string sourcePath, string destinationPath)
     {
       IArchiver archiver = new BinaryArchiver();
+      AllFileDeSerialize = 0;
+      DoneSerialize = 0;
+      archiver.ReportDeArchivationProgress += (o, e) =>
+      {
+        AllFileDeSerialize = e.MaxProgress;
+        DoneDeSerialize += e.Progress;        
+      };
       var task = archiver.DeArchive(sourcePath, destinationPath);
       return (Task)task;
     }
